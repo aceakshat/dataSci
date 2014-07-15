@@ -14,9 +14,9 @@ def lines(fp):
     
 def score_emotion(tweet, word_score):
   emo_score = 0
-  for word in tweet:
+  for word in tweet.split():    
     if(word_score.has_key(word)):
-      emo_score = emo_score+word_score[word]
+      emo_score = emo_score + word_score[word]
   return emo_score
 
 def main():
