@@ -1,5 +1,10 @@
 import sys, json
 
+# Author Akshat Chauhan
+# 07/14/2014
+# The first argument to this program is a tab seperated key value pair file
+# where key is a word and value is the sentiment attached to it
+# Second argument is a valid JSON file containing tweets from twitter.
     
 def parse_dictinory(dict_file):
     scores = {} # initialize an empty dictionary
@@ -10,9 +15,10 @@ def parse_dictinory(dict_file):
   
 def score_sentiment(tweet, word_score):
   sentiment_score = 0
-  for word in tweet.split():    
-    if(word_score.has_key(word)):
-      sentiment_score = sentiment_score + word_score[word]
+  for word in tweet.split():
+    lower_word = word.lower()    
+    if(word_score.has_key(lower_word)):
+      sentiment_score = sentiment_score + word_score[lower_word]
   return sentiment_score
 
 def main():
