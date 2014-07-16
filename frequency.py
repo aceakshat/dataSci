@@ -3,12 +3,20 @@ import sys, json
 # Author Akshat Chauhan
 # 07/14/2014
 # The first argument to this program is a valid JSON file containing tweets from twitter.
+
+def extract_tweet_data(file_to_parse):
+  all_tweets = list()
+
+  for line in file_to_parse:
+    json_line = json.loads(line)
+    all_tweets.append(json_line)
+
+  return all_tweets
     
 def main():
     word_count = {} # empty dict to store word count
     
-    tweet_file = open(sys.argv[1])
-    tweet_data = json.load(tweet_file)
+    tweet_data = extract_tweet_data(open(sys.argv[1]))
 
     total_word_count = 0 
     for x in tweet_data:
