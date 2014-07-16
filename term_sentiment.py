@@ -29,8 +29,6 @@ def main():
     tweet_file = open(sys.argv[2])
     tweet_data = json.load(tweet_file)
 
-#    tweet_score_List = list() # empty list for storing result
-
     for x in tweet_data:
       if x.has_key("text"):
         tweet = x["text"]
