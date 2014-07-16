@@ -22,12 +22,20 @@ def score_sentiment(tweet, word_score):
 
   return sentiment_score
 
+def extract_tweet_data(file_to_parse):
+  all_tweets = list()
+
+  for line in file_to_parse:
+    json_line = json.loads(line)
+    all_tweets.append(json_line)
+
+  return all_tweets
+
 def main():
     master_score = parse_dictinory(open(sys.argv[1]))
     calculated_score = {} # empty dict to store calculated scores
 
-    tweet_file = open(sys.argv[2])
-    tweet_data = json.load(tweet_file)
+    tweet_data = extract_tweet_data(open(sys.argv[2]))
 
     for x in tweet_data:
       if x.has_key("text"):
